@@ -16,7 +16,7 @@ Tokens represent the fundamental syntactic units of the expression.
     *   `type`: The `TokenType`.
     *   `lexeme`: The original string representation (e.g., `"+"`, `"4.5"`).
     *   `value`: A pre-parsed `double` (only populated if the type is `Number`).
-
+~
 ### 2. Lexer
 The `Lexer` is responsible for reading the raw input string, ignoring whitespaces, and breaking the text down into a `std::vector<Token>`.
 *   **Efficiency**: Utilizes `std::string_view` to read the input expression without generating unnecessary string copies in memory.

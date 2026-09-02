@@ -1,0 +1,17 @@
+# CMake & Build artifacts
+build/
+out/
+bin/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# vcpkg downloaded/compiled libraries
+vcpkg_installed/
+vcpkg-configuration.json
+
+# VS Code specific files (Optional: keep if you want to share workspace settings)
+.vscode/
