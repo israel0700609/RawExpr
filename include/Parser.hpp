@@ -1,3 +1,4 @@
+#pragma once
 #include <Expressions.hpp>
 #include <TokenType.hpp>
 class Parser {

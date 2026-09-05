@@ -1,13 +1,17 @@
+#include "Evaluator.hpp"
 #include "Lexer.hpp"
+#include "Parser.hpp"
+#include <fstream>
 #include <iostream>
 #include <sstream>
 
 int main() {
-
-  std::string input = "454.12 + ( 3 * .50 )";
-  std::istringstream inputStream(input);
-
-  Lexer lexer(inputStream);
+  std::ifstream inputFile("expressions.txt");
+  if (!inputFile.is_open()) {
+    std::cerr << "Error: Could not open the file 'expressions.txt'\n";
+    return 1;
+  }
+  Lexer lexer(inputFile);
 
   try {
     std::vector<Token> tokens = lexer.tokenize();
@@ -18,6 +22,17 @@ int main() {
                 << ", Line: " << token.line << ", Column: " << token.column
                 << "\n";
     }
+
+    Parser parser(tokens);
+
+    std::unique_ptr<Expr> tree = parser.parse();
+
+    Evaluator evaluator;
+
+    double result = evaluator.evaluate(tree);
+
+    std::cout << "Result: " << result << std::endl;
+
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';
   }

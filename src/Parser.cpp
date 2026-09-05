@@ -35,14 +35,14 @@ Token Parser::consume(TokenType type, const std::string &errorMessage) {
 
 std::unique_ptr<Expr> Parser::parse() {
   std::unique_ptr<Expr> ast = expression();
-  if (!match(TokenType::END_OF_FILE)) {
+
+  if (!isAtEnd()) {
     throw std::runtime_error(
         "Parsing Error: Something went wrong while parsing the tree.");
   }
 
   return ast;
 }
-
 std::unique_ptr<Expr> Parser::expression() {
   std::unique_ptr<Expr> left = term();
 
