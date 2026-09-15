@@ -1,5 +1,6 @@
 #include "Evaluator.hpp"
 #include "Lexer.hpp"
+#include "Logger.hpp"
 #include "Parser.hpp"
 #include <fstream>
 #include <iostream>
@@ -8,7 +9,7 @@
 int main() {
   std::ifstream inputFile("expressions.txt");
   if (!inputFile.is_open()) {
-    std::cerr << "Error: Could not open the file 'expressions.txt'\n";
+    Logger::ERROR("Could not open the file 'expressions.txt' ");
     return 1;
   }
   Lexer lexer(inputFile);
@@ -34,7 +35,7 @@ int main() {
     std::cout << "Result: " << result << std::endl;
 
   } catch (const std::exception &e) {
-    std::cerr << e.what() << '\n';
+    Logger::ERROR(e.what());
   }
 
   return 0;

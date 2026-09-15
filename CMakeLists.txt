@@ -9,6 +9,7 @@ add_executable(RawExpr
     src/Lexer.cpp
     src/Parser.cpp
     src/Evaluator.cpp
+    src/Logger.cpp
 )
 target_include_directories(RawExpr PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
